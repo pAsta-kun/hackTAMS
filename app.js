@@ -1,5 +1,6 @@
 let backgroundColors = ["#47A639", "#4398cd", "#d82d17", "#edcb1f"];
 let allTiles = document.querySelectorAll('.tile');
+let tileAmount;
 
 const wrapper = document.getElementById("tiles");
 let columns = Math.floor(document.body.clientWidth / 50),
@@ -39,7 +40,7 @@ function backgroundChange()
 {
     
     let allTiles = document.querySelectorAll('.tile');
-    let tileAmount = allTiles.length;
+    tileAmount = allTiles.length;
     let colorAmount = backgroundColors.length;
     let randomTile = Math.floor(Math.random()* tileAmount - 1) + 1;
     let randomColor = Math.floor(Math.random()* colorAmount-1 ) + 1;
@@ -59,11 +60,12 @@ function removeColor() {
 }
 function colorChange()
 {
+
     let backgroundChangeTimer = setInterval(function() {
         backgroundChange()
-    }, 1000);
+    }, 1500);
 
     let removeColorTimer = setInterval(function() {
         removeColor()
-    }, 1500);
+    }, 1000);
 }
