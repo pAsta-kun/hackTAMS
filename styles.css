@@ -41,6 +41,7 @@ body{
 }
 #sectionTwo{
     height: 55%;
+    gap: 30px;
 }
 h1{
     font-size: 65px;
@@ -60,4 +61,36 @@ h2{
 a{
     text-decoration: none;
     color: var(--blue);
+}
+#sectionThree{
+    flex-direction: column;
+    height: 200vh;
+    margin-top: 200px;
+}
+.box{
+    width: 70%;
+    height: 50%;
+    opacity: 100%;
+    border-radius: 10px;
+    font-size: 23px;
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.twentyThree{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-image: url("2023.jpg");
+    background-position: center;
+    background-size: 1500px;
+    filter: blur(3px);
+}
+.text{
+    font-size: 100px;
+    font-weight: bolder;
+    position: absolute;
+    filter: blur(none);
+    opacity: 50%;
 }
