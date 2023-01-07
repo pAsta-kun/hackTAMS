@@ -57,40 +57,43 @@ function removeColor() {
     let randomChanged = Math.floor(Math.random()* changedAmount - 1) + 1;
     changed[randomChanged].style.background = '#141414';
 }
-function colorChange()
+function colorChange(display)
 {
+    if(display == "off")
+    {
+        console.log('test');
+        return;
+    }
+    else 
+    {
+        console.log('test2');
+        let backgroundChangeTimer = setInterval(function() {
+            backgroundChange()
+        }, 1500);
 
-    let backgroundChangeTimer = setInterval(function() {
-        backgroundChange()
-    }, 1500);
+        let removeColorTimer = setInterval(function() {
+            removeColor()
+        }, 1000);
+    }
 
-    let removeColorTimer = setInterval(function() {
-        removeColor()
-    }, 1000);
+
 }
-
-
-/*const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        console.log(entry)
-        if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-        }
-    });
-});*/
-
 
 
 let callback = (entries, observer) => {
     entries.forEach((entry) => {
-        console.log(entry);
+        //console.log(entry);
         if (entry.isIntersecting) {
             entry.target.classList.remove('hidden');
             entry.target.classList.add('show');
             colorChange();
         }
         else 
-        entry.target.classList.add('hidden');
+        {
+            //entry.target.removeAttribute('id', 'tiles');
+        
+        }
+        
 
     });
 };
