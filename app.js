@@ -51,12 +51,11 @@ function backgroundChange()
         allTiles[randomTile].setAttribute("class", "changed");
     }
 }
-
 function removeColor() {
     let changed = document.querySelectorAll('.changed');
     let changedAmount = changed.length;
     let randomChanged = Math.floor(Math.random()* changedAmount - 1) + 1;
-    changed[randomChanged].style.background = '#141414'
+    changed[randomChanged].style.background = '#141414';
 }
 function colorChange()
 {
@@ -69,3 +68,36 @@ function colorChange()
         removeColor()
     }, 1000);
 }
+
+
+/*const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        console.log(entry)
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+});*/
+
+
+
+let callback = (entries, observer) => {
+    entries.forEach((entry) => {
+        console.log(entry);
+        if (entry.isIntersecting) {
+            entry.target.classList.remove('hidden');
+            entry.target.classList.add('show');
+            colorChange();
+        }
+        else 
+        entry.target.classList.add('hidden');
+
+    });
+};
+let observer = new IntersectionObserver(callback);
+let target = document.getElementById('sectionOne');
+let targetTwo = document.getElementById('sectionTwo');
+let targetThree = document.getElementById('sectionThree');
+observer.observe(target);
+observer.observe(targetTwo);
+observer.observe(targetThree);
