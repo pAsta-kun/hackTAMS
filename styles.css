@@ -14,6 +14,7 @@ body{
     font-family: "Poppins", sans-serif;
     color: var(--white);
 }
+/* For JS*/
 .show{
     opacity: 100%;
     filter: blur(0px);
@@ -33,19 +34,49 @@ body{
     grid-template-columns: repeat(var(--columns), 1fr);
     grid-template-rows: repeat(var(--rows), 1fr);
 }
-#sectionOne, #sectionTwo, #sectionThree{
+/* Sections */
+#main, #about, #events, #contact{
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#sectionTwo{
+#about{
     height: 55%;
     gap: 30px;
 }
+#events{
+    flex-direction: column;
+    height: 200vh;
+    margin-top: 200px;
+}
+#contact{
+    height: 55%;
+    flex-direction: column;
+    text-align: center;
+    font-size: 20px;
+}
+/*Text*/
 h1{
     font-size: 65px;
 }
+h2{
+    font-size: 45px;
+    margin: 0%;
+}
+h4{
+    margin: 0%;
+    line-height: 30px;
+    font-weight: 100
+}
+a{
+    text-decoration: none;
+    color: var(--blue);
+}
+a:hover{
+    cursor: pointer;
+}
+/* About */
 .info{
     display: flex;
     flex-direction: column;
@@ -55,18 +86,7 @@ h1{
     text-align: center;
     font-size: 20px;
 }
-h2{
-    font-size: 45px;
-}
-a{
-    text-decoration: none;
-    color: var(--blue);
-}
-#sectionThree{
-    flex-direction: column;
-    height: 200vh;
-    margin-top: 200px;
-}
+/* Events */
 .box{
     width: 70%;
     height: 50%;
@@ -78,19 +98,28 @@ a{
     justify-content: center;
     align-items: center;
 }
-.twentyThree{
+.img{
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    background-image: url("2023.jpg");
     background-position: center;
     background-size: 1500px;
     filter: blur(3px);
 }
-.text{
+.twentyThree{
+    background-image: url("2023.jpg");
+}
+.s3Text{
     font-size: 100px;
     font-weight: bolder;
     position: absolute;
     filter: blur(none);
     opacity: 50%;
+}
+/* Contact */
+.hyperlinks{
+    margin: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
 }
