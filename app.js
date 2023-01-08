@@ -98,9 +98,9 @@ let callback = (entries, observer) => {
     });
 };
 let observer = new IntersectionObserver(callback);
-let target = document.getElementById('sectionOne');
-let targetTwo = document.getElementById('sectionTwo');
-let targetThree = document.getElementById('sectionThree');
+let target = document.getElementById('main');
+let targetTwo = document.getElementById('about');
+let targetThree = document.getElementById('events');
 observer.observe(target);
 observer.observe(targetTwo);
 observer.observe(targetThree);
