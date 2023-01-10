@@ -36,6 +36,7 @@ const createGrid = () => {
 
 window.onresize = () => createGrid();
 
+//Chaning Tiles bs 
 function backgroundChange()
 {
     
@@ -57,29 +58,20 @@ function removeColor() {
     let randomChanged = Math.floor(Math.random()* changedAmount - 1) + 1;
     changed[randomChanged].style.background = '#141414';
 }
-function colorChange(display)
+function colorChange()
 {
-    if(display == "off")
+    let backgroundChangeTimer = setInterval(function() 
     {
-        console.log('test');
-        return;
-    }
-    else 
+        backgroundChange()
+    }, 1500);
+
+    let removeColorTimer = setInterval(function() 
     {
-        console.log('test2');
-        let backgroundChangeTimer = setInterval(function() {
-            backgroundChange()
-        }, 1500);
-
-        let removeColorTimer = setInterval(function() {
-            removeColor()
-        }, 1000);
-    }
-
-
+        removeColor()
+    }, 1000);
 }
 
-
+//Observer stuff
 let callback = (entries, observer) => {
     entries.forEach((entry) => {
         //console.log(entry);
@@ -90,7 +82,9 @@ let callback = (entries, observer) => {
         }
         else 
         {
-            //entry.target.removeAttribute('id', 'tiles');
+            columns = 1;
+            rows = 1
+            createTiles(columns * rows);
         
         }
         
@@ -101,6 +95,8 @@ let observer = new IntersectionObserver(callback);
 let target = document.getElementById('main');
 let targetTwo = document.getElementById('about');
 let targetThree = document.getElementById('events');
+let targetFour = document.getElementById('contact');
 observer.observe(target);
 observer.observe(targetTwo);
 observer.observe(targetThree);
+observer.observe(targetFour);
