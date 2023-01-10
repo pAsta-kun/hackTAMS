@@ -4,7 +4,7 @@ let tileAmount;
 
 const wrapper = document.getElementById("tiles");
 let columns = Math.floor(document.body.clientWidth / 50),
-    rows = Math.floor(document.body.clientHeight / 50);
+    rows = Math.floor(document.body.scrollHeight / 50);
 
     wrapper.style.setProperty("--columns", columns);
     wrapper.style.setProperty("--rows", rows);
@@ -36,11 +36,11 @@ const createGrid = () => {
 
 window.onresize = () => createGrid();
 
-//Chaning Tiles bs 
+//Changing Tiles bs 
 function backgroundChange()
 {
     
-    let allTiles = document.querySelectorAll('.tile');
+    allTiles = document.querySelectorAll('.tile');
     tileAmount = allTiles.length;
     let colorAmount = backgroundColors.length;
     let randomTile = Math.floor(Math.random()* tileAmount - 1) + 1;
@@ -58,17 +58,30 @@ function removeColor() {
     let randomChanged = Math.floor(Math.random()* changedAmount - 1) + 1;
     changed[randomChanged].style.background = '#141414';
 }
+let removeColorTimer;
 function colorChange()
 {
+    
     let backgroundChangeTimer = setInterval(function() 
     {
         backgroundChange()
-    }, 1500);
-
-    let removeColorTimer = setInterval(function() 
-    {
-        removeColor()
     }, 1000);
+
+    if(changed.length < allTiles.length/2)
+    {
+        removeColorTimer = setInterval(function() 
+        {
+            removeColor()
+        }, 1500);
+    }
+    else 
+    {
+        removeColorTimer = setInterval(function() 
+        {
+            removeColor()
+        }, 100);
+    }
+    
 }
 
 //Observer stuff
