@@ -59,10 +59,11 @@ function removeColor() {
     changed[randomChanged].style.background = '#141414';
 }
 let removeColorTimer;
+let backgroundChangeTimer;
 function colorChange()
 {
     
-    let backgroundChangeTimer = setInterval(function() 
+    backgroundChangeTimer = setInterval(function() 
     {
         backgroundChange()
     }, 1000);
@@ -87,21 +88,8 @@ function colorChange()
 //Observer stuff
 let callback = (entries, observer) => {
     entries.forEach((entry) => {
-        //console.log(entry);
-        if (entry.isIntersecting) {
             entry.target.classList.remove('hidden');
             entry.target.classList.add('show');
-            colorChange();
-        }
-        else 
-        {
-            columns = 1;
-            rows = 1
-            createTiles(columns * rows);
-        
-        }
-        
-
     });
 };
 let observer = new IntersectionObserver(callback);
