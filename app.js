@@ -60,28 +60,27 @@ function removeColor() {
 }
 let removeColorTimer;
 let backgroundChangeTimer;
-function colorChange()
+function colorChange(displayMode)
 {
     
-    backgroundChangeTimer = setInterval(function() 
-    {
-        backgroundChange()
-    }, 1000);
-
-    if(changed.length < allTiles.length/2)
-    {
-        removeColorTimer = setInterval(function() 
+        backgroundChangeTimer = setInterval(function() 
         {
-            removeColor()
-        }, 1500);
-    }
-    else 
-    {
-        removeColorTimer = setInterval(function() 
+            backgroundChange()
+        }, 1000);
+        if(changed.length < allTiles.length/2)
         {
-            removeColor()
-        }, 100);
-    }
+            removeColorTimer = setInterval(function() 
+            {
+                backgroundChange()
+            }, 1500);
+        }
+        else 
+        {
+            removeColorTimer = setInterval(function() 
+            {
+                removeColor()
+            }, 1000);
+        }
     
 }
 
@@ -90,6 +89,9 @@ let callback = (entries, observer) => {
     entries.forEach((entry) => {
             entry.target.classList.remove('hidden');
             entry.target.classList.add('show');
+            console.log(entry);
+            colorChange();
+            
     });
 };
 let observer = new IntersectionObserver(callback);
